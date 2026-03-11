@@ -1,30 +1,26 @@
-import About from "./components/About";
-import Contact from "./components/Contact";
-import FloatingElements from "./components/FloatingElements";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Navigation from "./components/Navigation";
-import Projects from "./components/Projects";
-import Skills from "./components/Skills";
-import { useGithubSnapshot } from "./hooks/useGithubSnapshot";
+import React from 'react'
+import CustomCursor from './components/ui/CustomCursor'
+import Navbar from './components/ui/Navbar'
+import Hero from './components/sections/Hero'
+import About from './components/sections/About'
+import Projects from './components/sections/Projects'
+import Skills from './components/sections/Skills'
+import Experience from './components/sections/Experience'
+import Contact from './components/sections/Contact'
 
-function App() {
-  const { profile, repositories, repoMap, totals, lastSync, loading, apiError } = useGithubSnapshot();
-
+export default function App() {
   return (
-    <div className="app-shell">
-      <FloatingElements />
-      <Navigation />
+    <>
+      <CustomCursor />
+      <Navbar />
       <main>
-        <Hero profileStats={profile} totals={totals} lastSync={lastSync} />
+        <Hero />
         <About />
-        <Projects repoMap={repoMap} repositories={repositories} loading={loading} apiError={apiError} />
+        <Projects />
         <Skills />
+        <Experience />
         <Contact />
       </main>
-      <Footer />
-    </div>
-  );
+    </>
+  )
 }
-
-export default App;
